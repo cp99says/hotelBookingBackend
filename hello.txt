@@ -1,0 +1,11 @@
+(Core) Have an existing database with default rooms.
+check_box_outline_blank
+(Core) Provide APIs and functions to let users take actions.
+check_box_outline_blank
+(Main) Provide at least 3 different room types.
+check_box_outline_blank
+(Main) Allow customers check the number of remaining rooms in each type and in total in the time frame they select.
+check_box_outline_blank
+(Main) If there is no room in a certain type available in the selected time frame, user cannot book that type of room.
+check_box_outline_blank
+(Main) A room is not available for booking for a certain timeframe if there is any overlapping between any booked date and the selected time frame.
