@@ -1,0 +1,28 @@
+register(as customer, as hotel=>(location,{villa, resort, apartment, cottage, ashram}))
+login(enter state, place, hotel)
+as hotel
+    -search API
+       -location
+    -list all kinds of rooms
+       -price for different rooms
+    -list their price
+    -list their job positions
+    -list coupons
+    -make booking backend
+    -services
+    -reviews
+    -policies
+    -SORT
+       -price range
+       -customer rating
+       -hotel type
+    -nearby places
+    -get API that will give all info about hotel including image
+    -Allow customers check the number of remaining rooms in each type and in total in the time frame they select
+    -never allow booking to non-logged in users
+    
+
+
+
+    -rooms schema
+       room type  number of rooms  price/night
