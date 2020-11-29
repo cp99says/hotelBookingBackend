@@ -30,9 +30,7 @@ app.post("/hotel_rooms1", async (req, res) => {
   // var id = req.body.id;
   // var obj = {
 
-  //   roomType: req.body.roomType,
-  //   roomNumber: req.body.roomNumber,
-  //   pricePerNight: req.body.pricePerNight,
+  
   // };  
   try {
     const data = await roomSchema.findOneAndUpdate(
