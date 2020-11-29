@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const hotelss = require("./../model/hotels");
+const hotelss = require("../model/hotels");
 const multer = require("multer");
 var multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
