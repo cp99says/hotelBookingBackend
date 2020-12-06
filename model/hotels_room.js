@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-
+const express=require('express')
 const schema = mongoose.Schema({
   name: {
     type: String,
     required: true,
   },  
-  room:{
-    type: {
+  room:[{   
+      type: {
       type: String,
       required: true,
       enum: ["deluxe", "super-deluxe", "presidential suite"],
@@ -19,7 +19,7 @@ const schema = mongoose.Schema({
       type: Number,
       required: true,
     },
-  }
+  }]
     
   
    

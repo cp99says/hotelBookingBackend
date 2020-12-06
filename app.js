@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 app.use("*", cors());
 app.get("/", (req, res) => {
-  res.send("all good");
+  res.send("all good, AWS is up");
 });
 //       register and get data of all rooms
 app.use("/reg", reg);

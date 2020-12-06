@@ -25,21 +25,20 @@ app.post("/hotel_rooms", async (req, res) => {
   }
 });
 
-app.post("/hotel_rooms1", async (req, res) => {
-  var id='5fc031e01adb8f51b822bcb5'
-  // var id = req.body.id;
-  // var obj = {
-
-  
+app.put("/hotel_rooms", async (req, res) => {
+  var name=req.body.name
+  var roomType=req.body.roomType
+  var roomPrice=req.body.roomPrice
+  var number=req.body.roomNumber  
   // };  
   try {
-    const data = await roomSchema.findOneAndUpdate(
-      { name: "prateek" },
+    const data = await roomSchema.update(
+      { name: name },
         {$push:{
-              room:{
-            type:'deluxe',
-            price:4587,
-            number:45
+            room:{
+            type:roomType,
+            price:roomPrice,
+            number:number
           }
         }      
           
