@@ -19,12 +19,7 @@ const schema = mongoose.Schema({
       type: Number,
       required: true,
     },
-  }]
-    
-  
-   
-  
-  
+  }]  
 });
 
 module.exports = mongoose.model("Hotel Rooms Tariff", schema);
