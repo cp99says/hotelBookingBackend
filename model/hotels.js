@@ -5,7 +5,7 @@ const hotelSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  place: {
+  address: {
     location: {
       type: String,
       required: true,
@@ -33,18 +33,19 @@ const hotelSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  facilities: {
-    type: String,
-    required: true,
-  },
+  facilities: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   hotel_type: {
     type: String,
     enum: ["villa", "cottage", "apartment", "ashram", "resort"],
     required: true,
   },
   dateOfRegister: {
-    type: Date,
-    default: Date.now(),
+    type: String,
   },
 });
 

@@ -9,7 +9,7 @@ const user = require("./register/register_user");
 const book = require("./routes/room_booking");
 
 mongoose.connect(
-  process.env.mongoURIAtlas,
+  process.env.mongoURILocal,
   {
     useNewUrlParser: true,
     useFindAndModify: false,

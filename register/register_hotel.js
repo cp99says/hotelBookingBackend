@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
+const moment = require("moment");
 const hotelss = require("../model/hotels");
 const multer = require("multer");
 var multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images/");
+    cb(null, "public/hotel/");
   },
   filename: (req, file, cb) => {
     cb(null, `${file.originalname}`);
@@ -18,16 +19,20 @@ app.post("/hotel", uploadFile, async (req, res) => {
   const original_name = req.files[0].originalname;
   const schema = new hotelss({
     name: req.body.name,
-    place: {
-      location: req.body.place.location,
-      city: req.body.place.city,
-      state: req.body.place.state,
+    address: {
+      location: req.body.address.location,
+      city: req.body.address.city,
+      state: req.body.address.state,
     },
     imageName: original_name,
     info: req.body.info,
     facilities: req.body.facilities,
     hotel_type: req.body.hotel_type,
+    dateOfRegister: moment()
+      .utcOffset("+05:30")
+      .format("MMMM Do YYYY, h:mm:ss a"),
   });
+  //res.send(schema);
   try {
     const a = await schema.save();
     res.status(201).json({
