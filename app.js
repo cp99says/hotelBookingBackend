@@ -7,13 +7,14 @@ const reg = require("./register/register_hotel");
 const rooms = require("./register/register_room");
 const user = require("./register/register_user");
 const book = require("./routes/room_booking");
+const rate = require("./routes/rating");
 
 mongoose.connect(
   process.env.mongoURILocal,
   {
     useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
+    useFindAndModify: true,    
+    useUnifiedTopology: true
   },
   () => {
     console.log("connected to db");
@@ -38,6 +39,8 @@ app.use("/user", user);
 //      to book rooms in their desired hotel
 app.use("/book", book);
 
+//      to rate and review your experience at hotel
+app.use('/rate',rate)
 const port = process.env.port || 3000;
 app.listen(port, () => {
   console.log(`server started at port: ${port}`);

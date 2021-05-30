@@ -20,10 +20,14 @@ const hotelSchema = mongoose.Schema({
     },
   },
   famous: {
-    reviews: [String],
-    rating: {
+    reviews: [{
+      type: String,
+    }],
+    rating: [{
       type: Number,
-    },
+      min:0,
+      max:5
+    }]
   },
   imageName: {
     type: String,

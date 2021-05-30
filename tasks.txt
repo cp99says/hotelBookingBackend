@@ -1,7 +1,7 @@
 register(as customer, as hotel=>(location,{villa, resort, apartment, cottage, ashram})) (done)
 login(enter state, place, hotel)
 as hotel
-    -search API(done)
+    -search API
        -location
     -list all kinds of rooms (pending)
        -price for different rooms
@@ -25,3 +25,7 @@ as hotel
 
     -rooms schema
        room type  number of rooms  price/night
+
+
+OPTIMISATION NEEDED IN ROOM BOOKING API
+VALIDATION NEEDED IN RATINGS AND REVIEWS API
