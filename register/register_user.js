@@ -14,14 +14,14 @@ var multerStorage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: multerStorage });
-var uploadFile = upload.any("file");
+var uploadFile = upload.any("image");
 
 app.post("/register", uploadFile, async (req, res) => {
   const password = req.body.password;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   const image_name = req.files[0].originalname;
-
+  //res.send(req.files);
   const a = new user({
     username: req.body.username,
     name: req.body.name,

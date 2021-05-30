@@ -1,59 +1,40 @@
-const express=require('express')
-const app=express()
-const roomy=require('./../model/hotels_room')
-const booking=require('./../model/roomBooking')
-
-
-app.post('/booking', async(req,res)=>{
-       
-   const id=req.body.hotelId  
-       
-   const data=await roomy.findOne({'_id':id},
+const express = require("express");
+const app = express();
+const room = require("./../model/hotel_room");
+const moment = require("moment");
+const booking = require("./../model/room_booking");
+app.patch("/roomBooking", async (req, res) => {
+  try {
+    const hotel_id = req.body.hotelId;
+    const type = req.body.roomType;
+    const qty = req.body.qty;
+    // const check = await room.find({
+    //   '_id': hotel_id,
+    //   'roomsAvailable': { $elemMatch: { 'roomType': type, 'quantityAvailable': {$gt:1} } },
+    // });      
+    // if(check){
+      const success = await room.update(
         {
-        room:{
-           $elemMatch:{
-              type:"super-deluxe",              
-           },
-           $inc:{number:-1}
-        }
-      }     
-      
-   )  
-   res.json(data)
-
-})
-module.exports=app
-
-
-/* app.post('/booking', async(req,res)=>{
-       
-   const id=req.body.hotelId  
-       
-   const data=await roomy.findById({'_id':id},
+          '_id': hotel_id,
+          'roomsAvailable': { $elemMatch: { 'roomType': type } },
+        },
         {
-        room:{
-           $elemMatch:{
-              type:"presidential suite"
-           }
+          $inc: { "roomsAvailable.$.quantityAvailable": -qty },
         }
-      }
-           
-   )  
-   res.json(data)
+      );
+      res.json({
+        available: success.length,
+        success,
+      });
+    //}     
+    // else{
+    //   return res.json({message:'rooms not available for this category anymore'})
+    // }
+    
+    
+  } catch (err) {
+    res.send(err);
+  }
+});
 
-})
-      
-      
-   )*/
-//    Survey.updateOne(
-//       {
-//           _id: surveyId,
-//           recipients: {
-//               $elemMatch: { email: "a@gmail.com", responded: false }
-//           }
-//       }, 
-//       {
-//           $inc: { [choice]: 1 },
-//           $set: { 'recipients.$.responded': true }
-//       }
-//   ).exec();
+module.exports = app;

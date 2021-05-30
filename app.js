@@ -9,7 +9,7 @@ const user = require("./register/register_user");
 const book = require("./routes/room_booking");
 
 mongoose.connect(
-  process.env.mongoURIAtlas,
+  process.env.mongoURILocal,
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -28,12 +28,16 @@ app.get("/", (req, res) => {
 });
 //       register and get data of all rooms
 app.use("/reg", reg);
+
 //       register and get data of available room hotel wise
 app.use("/data", rooms);
+
 //       register the data of customers who book the hotel
 app.use("/user", user);
+
 //      to book rooms in their desired hotel
-app.use("/room", book);
+app.use("/book", book);
+
 const port = process.env.port || 3000;
 app.listen(port, () => {
   console.log(`server started at port: ${port}`);
